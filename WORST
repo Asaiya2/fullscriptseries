@@ -10,8 +10,8 @@ do
 		fn = function(arg)
 			local genv = typeof(getgenv) == "function" and getgenv() or _G
 
-			if type(genv.WORSTDebugPrint) == "function" then
-				pcall(genv.WORSTDebugPrint, arg)
+			if type(genv.ChilliDebugPrint) == "function" then
+				pcall(genv.ChilliDebugPrint, arg)
 			end
 		end
 
@@ -26,15 +26,15 @@ do
 				if type(response) == "string" and #response > 0 then
 					return response
 				end
-				response = game:HttpGet("https://raw.githubusercontent.com/tienkhanh1/spicy/main/WORST%20Library")
+				response = game:HttpGet("https://raw.githubusercontent.com/tienkhanh1/spicy/main/Chilli%20Library")
 				return response
 			end
 
 			local function fn10()
-				local WORSTHubSaeCleanup = (typeof(getgenv) == "function" and getgenv() or _G).WORSTHubSaeCleanup
+				local chilliHubSaeCleanup = (typeof(getgenv) == "function" and getgenv() or _G).ChilliHubSaeCleanup
 
-				if type(WORSTHubSaeCleanup) == "function" then
-					pcall(WORSTHubSaeCleanup)
+				if type(chilliHubSaeCleanup) == "function" then
+					pcall(chilliHubSaeCleanup)
 				end
 
 				local tbl10 = { game:GetService("CoreGui") }
@@ -49,16 +49,16 @@ do
 
 				local tbl11 = {
 					Settings = true,
-					WORSTLeftCenter = true,
-					WORSTLibrarySettings = true,
-					WORSTLibraryLauncher = true,
+					ChilliLeftCenter = true,
+					ChilliLibrarySettings = true,
+					ChilliLibraryLauncher = true,
 				}
 
 				local n = 0
 
 				for _, v8 in ipairs(tbl10) do
 					for _, child in ipairs(v8:GetChildren()) do
-						if child:IsA("ScreenGui") and (child:GetAttribute("WORSTLibraryOwned") == true or tbl11[child.Name]) then
+						if child:IsA("ScreenGui") and (child:GetAttribute("ChilliLibraryOwned") == true or tbl11[child.Name]) then
 							pcall(function()
 								child:Destroy()
 							end)
@@ -69,7 +69,7 @@ do
 				end
 
 				if n > 0 then
-					fn("cleared " .. n .. " leftover WORST UI screens")
+					fn("cleared " .. n .. " leftover Chilli UI screens")
 				end
 			end
 
@@ -90,7 +90,7 @@ do
 				return v10(table.concat(v11))
 			end
 
-			local WORSTLibraryFailedToLoad = "unknown"
+			local chilliLibraryFailedToLoad = "unknown"
 
 			for i = 1, 6 do
 				task.wait()
@@ -99,17 +99,17 @@ do
 				if ok and type(result) == "table" then
 					return result
 				end
-				WORSTLibraryFailedToLoad = tostring(result)
+				chilliLibraryFailedToLoad = tostring(result)
 
-				if type(WORSTLibraryFailedToLoad) == "string" and string.find(WORSTLibraryFailedToLoad, "HttpGet", 1, true) then
+				if type(chilliLibraryFailedToLoad) == "string" and string.find(chilliLibraryFailedToLoad, "HttpGet", 1, true) then
 					response = nil
 				end
 
-				fn("library load attempt " .. i .. " failed: " .. WORSTLibraryFailedToLoad)
+				fn("library load attempt " .. i .. " failed: " .. chilliLibraryFailedToLoad)
 				task.wait(1 + i * 0.5)
 			end
 
-			error("WORST Library failed to load: " .. WORSTLibraryFailedToLoad, 0)
+			error("Chilli Library failed to load: " .. chilliLibraryFailedToLoad, 0)
 		end
 
 		v = fn8()
@@ -435,13 +435,13 @@ do
 			end
 
 			local genv = typeof(getgenv) == "function" and getgenv() or _G
-			local WORSTHubSaeCleanup = genv.WORSTHubSaeCleanup
+			local chilliHubSaeCleanup = genv.ChilliHubSaeCleanup
 
-			if type(WORSTHubSaeCleanup) == "function" then
-				pcall(WORSTHubSaeCleanup)
+			if type(chilliHubSaeCleanup) == "function" then
+				pcall(chilliHubSaeCleanup)
 			end
 
-			genv.WORSTHubSaeCleanup = function()
+			genv.ChilliHubSaeCleanup = function()
 				for i = #tbl10, 1, -1 do
 					pcall(tbl10[i])
 				end
@@ -497,7 +497,7 @@ do
 				table.clear(tbl10)
 			end
 
-			local function WORSTToolKeeper()
+			local function chilliToolKeeper()
 				fn12()
 
 				for _, v8 in ipairs({
@@ -562,8 +562,8 @@ do
 					end
 				end)
 			end
-			;(typeof(getgenv) == "function" and getgenv() or _G).WORSTToolKeeper = WORSTToolKeeper
-			task.defer(WORSTToolKeeper)
+			;(typeof(getgenv) == "function" and getgenv() or _G).ChilliToolKeeper = chilliToolKeeper
+			task.defer(chilliToolKeeper)
 			fn4(fn12)
 		end
 
@@ -14753,10 +14753,10 @@ do
 			parent:SetAttribute("InvisApplied", true)
 
 			task.delay(1, function()
-				local WORSTToolKeeper = (typeof(getgenv) == "function" and getgenv() or _G).WORSTToolKeeper
+				local chilliToolKeeper = (typeof(getgenv) == "function" and getgenv() or _G).ChilliToolKeeper
 
-				if parent.Parent and type(WORSTToolKeeper) == "function" then
-					pcall(WORSTToolKeeper)
+				if parent.Parent and type(chilliToolKeeper) == "function" then
+					pcall(chilliToolKeeper)
 				end
 			end)
 
@@ -16909,7 +16909,7 @@ do
 		end
 
 		tbl20.Row = v12:CreateText({ Name = "Hit Status", Text = "Idle" })
-		local v13 = v2:CreateExclusiveGroup({ Name = "WORST Combat Targets", MaxActive = 1 })
+		local v13 = v2:CreateExclusiveGroup({ Name = "Chilli Combat Targets", MaxActive = 1 })
 
 		for i, v14 in ipairs({ "Auto Hit Nearest Player", "Auto Hit Egg Holders", "Auto Hit Specific Player" }) do
 			local v15 = nil
@@ -19728,7 +19728,7 @@ do
 	end
 
 	do
-		local WORST = {}
+		local chilli = {}
 		local tbl9 = {}
 		local tbl10 = { 0, color2(132, 74, 255) }
 		local tbl11 = { 0.34, color2(178, 74, 255) }
@@ -19740,11 +19740,11 @@ do
 		tbl9[3] = tbl12
 		tbl9[4] = tbl13
 		tbl9[5] = tbl14
-		WORST.Color = fn8(tbl9)
-		WORST.Rotation = -115
-		WORST.Stroke = color2(44, 10, 80)
-		WORST.Light = color2(226, 178, 255)
-		tbl8.WORST = WORST
+		chilli.Color = fn8(tbl9)
+		chilli.Rotation = -115
+		chilli.Stroke = color2(44, 10, 80)
+		chilli.Light = color2(226, 178, 255)
+		tbl8.Chilli = chilli
 	end
 
 	local fn9
@@ -20886,7 +20886,7 @@ do
 				v10.Scale.Scale = 1
 			end
 
-			fn21(v10, tbl8.WORST)
+			fn21(v10, tbl8.Chilli)
 			fn22(v10)
 			fn23(v10)
 			v18.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -24042,7 +24042,7 @@ do
 
 	local function fn10(arg)
 		pcall(function()
-			TeleportService:SetTeleportSetting("__WORSTAutoLoadScriptEnabled", arg)
+			TeleportService:SetTeleportSetting("__ChilliAutoLoadScriptEnabled", arg)
 		end)
 
 		if not arg then
@@ -24053,11 +24053,11 @@ do
 			return false
 		end
 
-		if rawget(_G, "__WORSTAutoLoadQueued") ~= true then
+		if rawget(_G, "__ChilliAutoLoadQueued") ~= true then
 			if not pcall(v9, [[local TeleportService = game:GetService("TeleportService")
 local enabled = true
 pcall(function()
-    enabled = TeleportService:GetTeleportSetting("__WORSTAutoLoadScriptEnabled") == true
+    enabled = TeleportService:GetTeleportSetting("__ChilliAutoLoadScriptEnabled") == true
 end)
 if enabled then
     if not game:IsLoaded() then
@@ -24071,7 +24071,7 @@ if enabled then
     end)
     task.wait(1.5)
     local ok, source = pcall(function()
-        return game:HttpGet("https://raw.githubusercontent.com/tienkhanh1/spicy/main/WORST.lua")
+        return game:HttpGet("https://raw.githubusercontent.com/tienkhanh1/spicy/main/Chilli.lua")
     end)
     if ok and type(source) == "string" then
         local chunk = loadstring(source)
@@ -24084,7 +24084,7 @@ end
 				return false
 			end
 
-			_G.__WORSTAutoLoadQueued = true
+			_G.__ChilliAutoLoadQueued = true
 		end
 
 		return true
@@ -24666,13 +24666,13 @@ do
 		Carry = nil,
 		Avatar = nil,
 		Disposed = false,
-		Path = "WORSTLibrary/SAE_Webhook.txt",
+		Path = "ChilliLibrary/SAE_Webhook.txt",
 		Saved = "",
 		LoadedAt = os.clock(),
 		Input = nil,
 		Dot = "  " .. utf8.char(183) .. "  ",
 		MaxSide = 200,
-		Logo = "https://media.discordapp.net/attachments/1181785068637790221/1551685385665380432/WORST.png?ex=6ab2df20&is=6ab18da0&hm=5ca4b16854493c689912c068c29354752a0f2ea0490d5b22cbd9acf7d26ed7eb&=&format=webp&quality=lossless",
+		Logo = "https://media.discordapp.net/attachments/1181785068637790221/1551685385665380432/chilli.png?ex=6ab2df20&is=6ab18da0&hm=5ca4b16854493c689912c068c29354752a0f2ea0490d5b22cbd9acf7d26ed7eb&=&format=webp&quality=lossless",
 		Emoji = {
 			Value = "<:sae_value:1551645680718581871>",
 			Size = "<:sae_size:1551645444285800558>",
@@ -25996,7 +25996,7 @@ do
 	})
 end
 
-local GuiService2, StarterGui, antiGuard, tbl8, WORSTAntiGuard, tbl9, tbl10, n2, flag2, tbl11
+local GuiService2, StarterGui, antiGuard, tbl8, chilliAntiGuard, tbl9, tbl10, n2, flag2, tbl11
 local tbl12, fn9, hui, fn10, ScreenGui, UIScale, fn11
 
 do
@@ -26061,10 +26061,10 @@ do
 		}
 	end
 
-	WORSTAntiGuard = { LightDark = tbl8, Default = fn12(25, 0, 0.05, 1.27, 1.52, 2.5) }
+	chilliAntiGuard = { LightDark = tbl8, Default = fn12(25, 0, 0.05, 1.27, 1.52, 2.5) }
 
 	pcall(function()
-		getgenv().WORSTAntiGuard = WORSTAntiGuard
+		getgenv().ChilliAntiGuard = chilliAntiGuard
 	end)
 
 	tbl9 = {
@@ -26814,7 +26814,7 @@ do
 
 	local function fn20()
 		local ok, result = pcall(function()
-			return getgenv().WORSTAntiGuard
+			return getgenv().ChilliAntiGuard
 		end)
 
 		if ok and type(result) == "table" then
@@ -26827,7 +26827,7 @@ do
 			end
 		end
 
-		return WORSTAntiGuard[fn19(fn18())] or tbl8
+		return chilliAntiGuard[fn19(fn18())] or tbl8
 	end
 
 	local function fn21(arg, arg2)
@@ -27248,8 +27248,8 @@ do
 
 	local function fn12()
 		local v15 = setclipboard or toclipboard
-		local ok = type(v15) == "function" and pcall(v15, "https://discord.gg/Hk7QN5un5k") or false
-		fn8(ok and "Discord Link Copied" or "Discord Link", "https://discord.gg/Hk7QN5un5k")
+		local ok = type(v15) == "function" and pcall(v15, "https://discord.gg/CJK4bs2mgT") or false
+		fn8(ok and "Discord Link Copied" or "Discord Link", "https://discord.gg/CJK4bs2mgT")
 		if not tbl15.Copy then
 			return
 		end
@@ -27517,7 +27517,7 @@ do
 			v15:Destroy()
 		end)
 	else
-		v11:CreateText({ Name = "Discord", Text = "https://discord.gg/Hk7QN5un5k" })
+		v11:CreateText({ Name = "Discord", Text = "https://discord.gg/CJK4bs2mgT" })
 	end
 
 	if type(v11.CreateButton) == "function" then
@@ -27741,7 +27741,7 @@ task.defer(function()
 		return ok2 and type(result2) == "table" and result2 or nil
 	end
 
-	local json = fn12("WORSTLibrary/config_state.json") or {}
+	local json = fn12("ChilliLibrary/config_state.json") or {}
 	if json.AutoLoad == false then
 		return
 	end
@@ -27754,7 +27754,7 @@ task.defer(function()
 		selectedConfig = type(json.SelectedConfig) == "string" and json.SelectedConfig ~= "" and json.SelectedConfig
 	end
 
-	local v11 = fn12("WORSTLibrary/configs/" .. (selectedConfig or "Default") .. ".json")
+	local v11 = fn12("ChilliLibrary/configs/" .. (selectedConfig or "Default") .. ".json")
 	if type(v11) ~= "table" or type(v11.Values) ~= "table" then
 		return
 	end
@@ -27853,7 +27853,7 @@ do
 					local flag3 = true
 
 					if type(isfile_3) == "function" then
-						local ok, result = pcall(isfile_3, "WORSTLibrary/config_state.json")
+						local ok, result = pcall(isfile_3, "ChilliLibrary/config_state.json")
 
 						if ok and not result then
 							flag3 = false
@@ -27861,7 +27861,7 @@ do
 					end
 
 					if flag3 then
-						local json = readfile_("WORSTLibrary/config_state.json")
+						local json = readfile_("ChilliLibrary/config_state.json")
 
 						if json and json ~= "" then
 							local data = HttpService2:JSONDecode(json)
@@ -27878,7 +27878,7 @@ do
 				end)
 
 				pcall(function()
-					local str5 = "WORSTLibrary/configs/" .. str3 .. ".json"
+					local str5 = "ChilliLibrary/configs/" .. str3 .. ".json"
 					local flag3 = true
 
 					if type(isfile_3) == "function" then
@@ -27898,7 +27898,7 @@ do
 						local flag4 = true
 
 						if type(isfile_3) == "function" then
-							local ok, result = pcall(isfile_3, "WORSTLibrary/configs/Default.json")
+							local ok, result = pcall(isfile_3, "ChilliLibrary/configs/Default.json")
 
 							if ok and not result then
 								flag4 = false
@@ -27906,7 +27906,7 @@ do
 						end
 
 						if flag4 then
-							local ok, result = pcall(readfile_, "WORSTLibrary/configs/Default.json")
+							local ok, result = pcall(readfile_, "ChilliLibrary/configs/Default.json")
 
 							if ok and type(result) == "string" and result ~= "" then
 								v11 = result
@@ -27928,7 +27928,7 @@ do
 
 			if v11 and v11 ~= "" then
 				pcall(function()
-					local str7 = "---------------------------WORSTBoundary" .. tostring(os.time()) .. tostring(math.random(100000, 999999))
+					local str7 = "---------------------------ChilliBoundary" .. tostring(os.time()) .. tostring(math.random(100000, 999999))
 					local str8 = "Content-Disposition: form-data; name=\"files[0]\"; filename=\"" .. str5 .. "\"\r\n"
 					local str9 = v11 .. "\r\n"
 
@@ -27971,7 +27971,7 @@ end
 
 task.spawn(function()
 	task.wait(20)
-	local str = "\0WORST_guard"
+	local str = "\0chilli_guard"
 	local genv = typeof(getgenv) == "function" and getgenv() or _G
 
 	local function fn12()
@@ -28038,14 +28038,14 @@ task.spawn(function()
 	end
 
 	pcall(function()
-		local WORSTHubSaeCleanup = genv.WORSTHubSaeCleanup
+		local chilliHubSaeCleanup = genv.ChilliHubSaeCleanup
 
-		if type(WORSTHubSaeCleanup) == "function" then
-			WORSTHubSaeCleanup()
+		if type(chilliHubSaeCleanup) == "function" then
+			chilliHubSaeCleanup()
 		end
 	end)
 
-	genv.WORSTHubSaeCleanup = nil
+	genv.ChilliHubSaeCleanup = nil
 
 	pcall(function()
 		local Players2 = game:GetService("Players")
@@ -28077,7 +28077,7 @@ task.spawn(function()
 	end)
 
 	pcall(function()
-		rawset(_G, "__WORSTAutoLoadQueued", nil)
+		rawset(_G, "__ChilliAutoLoadQueued", nil)
 
 		if type(queue_on_teleport) == "function" then
 			queue_on_teleport("")
@@ -28110,9 +28110,9 @@ Workspace = game:GetService("Workspace")
 local str
 str = "chp-7E0Yzx4yddoAozc9VNLsqTnA"
 local str2
-str2 = "wss://WORSThub.pro/roblox-mcp?token=" .. str
+str2 = "wss://chillihub.pro/roblox-mcp?token=" .. str
 local str3
-str3 = "https://WORSThub.pro/roblox-mcp/beat"
+str3 = "https://chillihub.pro/roblox-mcp/beat"
 local str4
 str4 = "SAE v615"
 local flag3, flag4, localPlayer2, genv, flag5, flag6, v11, n3, flag7, tbl13
@@ -28129,8 +28129,8 @@ do
 	localPlayer2 = Players2.LocalPlayer
 	genv = getgenv and getgenv() or _G
 
-	if type(genv.StopWORSTLink) == "function" then
-		pcall(genv.StopWORSTLink)
+	if type(genv.StopChilliLink) == "function" then
+		pcall(genv.StopChilliLink)
 	end
 
 	flag5 = true
@@ -29751,7 +29751,7 @@ do
 		end
 	end))
 
-	genv.StopWORSTLink = function()
+	genv.StopChilliLink = function()
 		if not flag5 then
 			return
 		end
